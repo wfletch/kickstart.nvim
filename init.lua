@@ -246,7 +246,19 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-
+  -- Change the splash screen
+  {
+    'goolord/alpha-nvim',
+    -- dependencies = { 'echasnovski/mini.icons' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local startify = require 'alpha.themes.startify'
+      -- available: devicons, mini, default is mini
+      -- if provider not loaded and enabled is true, it will try to use another provider
+      startify.file_icons.provider = 'devicons'
+      require('alpha').setup(startify.config)
+    end,
+  },
   -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
